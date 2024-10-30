@@ -2,6 +2,16 @@ FROM python:3.10-alpine
 
 WORKDIR /app
 
+# 添加编译依赖
+RUN apk add --no-cache \
+    gcc \
+    musl-dev \
+    python3-dev \
+    libffi-dev \
+    openssl-dev \
+    cargo \
+    make
+
 COPY ./main.py .
 COPY ./common ./common
 COPY ./modules ./modules
